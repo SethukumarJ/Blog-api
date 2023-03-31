@@ -4,7 +4,7 @@ services:
     container_name: full_app
     build: .
     ports: 
-      - 3001:3001 
+      - 8080:8080 
     restart: on-failure
     volumes:
       - api:/usr/src/app/
@@ -21,16 +21,14 @@ services:
       - POSTGRES_USER=${DB_USER}  
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
-      - DB_HOST=${DB_HOST} 
+      - DATABASE_HOST=${DB_HOST} 
     ports:
-      - '5433:5433'
+      - '5432:5432'
     volumes:
       - database_postgres:/var/lib/postgresql/data
     networks:
       - fullstack
-    hostname: postgres-container
 
-    
 
 volumes:
   api:
